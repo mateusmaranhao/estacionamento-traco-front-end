@@ -1,3 +1,5 @@
+import { postVehicle } from "../service/index.js"
+
 const form = document.getElementById('signup-form')
 form.addEventListener('submit', function(event) {
   event.preventDefault()
@@ -9,6 +11,5 @@ form.addEventListener('submit', function(event) {
     owner: document.getElementById('name').value,
     observation: document.getElementById('observation').value
   }
-
-  console.log(clientSingup)
+  postVehicle(clientSingup)
 })
