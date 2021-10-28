@@ -1,5 +1,6 @@
 import { service } from "../service/index.js";
 import { view } from "../view/index.js"
+import { updateComponent } from "./atualiza.js";
 
 export const clientComponent = () => {
   view.getClient();
@@ -16,9 +17,10 @@ export const clientComponent = () => {
 
   table.addEventListener('click', (event) => {
     const button = event.path[0].innerHTML
+    const id = event.path[0].id
 
     if(button == "Editar") {
-      console.log(button)
+      updateComponent(id);
     }
     if(button == "Excluir") {
       console.log(button)
