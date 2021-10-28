@@ -1,4 +1,4 @@
-import { postVehicle } from "../service/index.js"
+import { service } from "../service/index.js"
 import { view } from "../view/index.js"
 
 export const singupComponent = () => {
@@ -15,6 +15,6 @@ export const singupComponent = () => {
       owner: document.getElementById('name').value,
       observation: document.getElementById('observation').value
     }
-    postVehicle(clientSingup)
+    service.postVehicle(clientSingup)
   })
 };

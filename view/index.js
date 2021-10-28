@@ -44,7 +44,7 @@ const getClient = () => {
   const dadosHTML = `
     <section>
       <h1>Lista de Clientes</h1>
-      <table>
+      <table id="tbody">
         <tr>
           <th>Cliente</th>
           <th>Modelo</th>
