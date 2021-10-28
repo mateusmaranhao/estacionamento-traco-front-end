@@ -24,9 +24,10 @@ export const updateComponent = (idParam) => {
       owner: document.getElementById('name').value,
       observation: document.getElementById('observation').value
     }
-    service.putVehicle(clientUpdate, idParam)
-    cancelar()
-    clientComponent()
+    service.putVehicle(clientUpdate, idParam).then(() => {
+      cancelar()
+      clientComponent()
+    })
   })
 }
 
