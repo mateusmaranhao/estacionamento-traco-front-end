@@ -1,8 +1,8 @@
 import { postVehicle } from "../service/index.js"
-import { getSignup } from "../view/index.js"
+import { view } from "../view/index.js"
 
 export const singupComponent = () => {
-  getSignup();
+  view.getSignup();
 
   const form = document.getElementById('signup-form')
   form.addEventListener('submit', function(event) {

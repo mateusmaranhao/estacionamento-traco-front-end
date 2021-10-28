@@ -1,4 +1,4 @@
-export const getSignup = () => {
+const getSignup = () => {
     const main = document.getElementById('root');
   const dadosHTML = `
   <h1>Novo Cliente</h1>
@@ -37,4 +37,31 @@ export const getSignup = () => {
   `
 
   main.innerHTML = dadosHTML;
+}
+
+const getClient = () => {
+  const main = document.getElementById('root');
+  const dadosHTML = `
+    <section>
+      <h1>Lista de Clientes</h1>
+      <table>
+        <tr>
+          <th>Cliente</th>
+          <th>Modelo</th>
+          <th>Placa</th>
+          <th>Tipo</th>
+          <th>Observações</th>
+          <th>
+            <a href="#">Novo</a>
+          </th>
+        </tr>
+      </table>
+    </section>
+  `
+  main.innerHTML = dadosHTML;
+}
+
+export const view = {
+  getSignup,
+  getClient
 }
