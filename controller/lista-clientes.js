@@ -23,7 +23,7 @@ export const clientComponent = () => {
       updateComponent(id);
     }
     if(button == "Excluir") {
-      console.log(button)
+      deleteComponent(id)
     }
     if(button == "Novo") {
       console.log(button)
@@ -50,4 +50,10 @@ const addNewLine = (cliente, modelo, placa, tipo, observacoes, id) => {
   `
   newLine.innerHTML = dadosHTML;
   return table.appendChild(newLine);
+}
+
+const deleteComponent = (id) => {
+  service.deleteVehicle(id).then(() => {
+    clientComponent();
+  })
 }

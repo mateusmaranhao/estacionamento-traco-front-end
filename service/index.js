@@ -43,8 +43,21 @@ const putVehicle = (clientObject, id) => {
   })
 }
 
+const deleteVehicle = (id) => {
+   return fetch(`${url}/vehicles/${id}`, {
+    method: "DELETE",
+  }).then((response) => {
+    if(response.status != 200) {
+      alert(`Desculpe, houve o erro ${response.status}`);
+    } else {
+      return response.json()
+    }
+  })
+}
+
 export const service = {
   postVehicle,
   getVehicle,
   putVehicle,
+  deleteVehicle,
 }
