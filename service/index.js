@@ -6,6 +6,6 @@ export const postVehicle = (clientObject) => {
     headers: {
       "Content-Type": "application/json"
     },
-    body: clientObject
+    body: JSON.stringify(clientObject)
   })
 }
