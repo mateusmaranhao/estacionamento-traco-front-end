@@ -102,8 +102,37 @@ const dadosHTML = `
 main.innerHTML = dadosHTML;
 }
 
+const getCheckinHTML = () => {
+  const main = document.getElementById('root');
+  const dadosHTML = `
+    <section>
+      <h2>Lista de Clientes do Estacionamento</h2>
+      <br>
+      <table id="tbody" class="tabela">
+        <tr>
+        <th>Modelo</th>
+        <th>Placa</th>
+        <th>Opção</th>
+        </tr>
+      </table>
+
+      <div>
+        <label for="select">Placa</label>
+        <select id="select" class="input"></select>
+        <a type="button" id="adicionar-novo">Adicionar Novo</a>
+        <br>
+        <div class="btn">
+          <button id="checkin" class="btn-link">Checkin</button>
+        </div>
+      </div>
+    </section>
+  `
+  main.innerHTML = dadosHTML;
+}
+
 export const view = {
   getSignup,
   getClient,
   getUpdate,
+  getCheckinHTML,
 }

@@ -13,5 +13,9 @@ link.addEventListener('click', (event) => {
     case "Clientes":
       clientComponent();
       break;
+    case "Check-in": {
+      window.location.href = "./checkin.html"
+      break;
+    }
   }
 })
