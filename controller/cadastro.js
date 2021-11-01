@@ -2,6 +2,16 @@ import { service } from "../service/index.js"
 import { view } from "../view/index.js"
 
 export const singupComponent = () => {
+  const label = []
+
+  service.getVehicle().then((dados) => {
+    dados.forEach(element => {
+      if(element.label != null) {
+        label.push(element.label)
+      }
+    });
+  })
+
   view.getSignup();
 
   const form = document.getElementById('signup-form')
@@ -15,6 +25,11 @@ export const singupComponent = () => {
       owner: document.getElementById('name').value,
       observation: document.getElementById('observation').value
     }
-    service.postVehicle(clientSingup)
+
+    if(label.includes(clientSingup.label)) {
+      alert(`A placa [${clientSingup.label}] já está cadastrada.`)
+    } else {
+      service.postVehicle(clientSingup)
+    }
   })
 };

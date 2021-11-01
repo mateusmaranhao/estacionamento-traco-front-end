@@ -4,6 +4,18 @@ import { clientComponent } from "./lista-clientes.js";
 
 
 export const updateComponent = (idParam) => {
+
+  const label = []
+
+  service.getVehicle().then((dados) => {
+    dados.forEach(element => {
+      if(element.label != null) {
+        label.push(element.label)
+      }
+    });
+  })
+
+  
   view.getUpdate();
 
   service.getVehicle().then((dados) => {
@@ -24,10 +36,17 @@ export const updateComponent = (idParam) => {
       owner: document.getElementById('name').value,
       observation: document.getElementById('observation').value
     }
-    service.putVehicle(clientUpdate, idParam).then(() => {
-      cancelar()
-      clientComponent()
-    })
+
+    if(label.include(clientUpdate.label)) {
+      return alert(`A placa [${clientUpdate.label}] já está cadastrada.`)
+    } else {
+      service.putVehicle(clientUpdate, idParam).then(() => {
+        cancelar()
+        clientComponent()
+      })
+    }
+
+    
   })
 }
 
