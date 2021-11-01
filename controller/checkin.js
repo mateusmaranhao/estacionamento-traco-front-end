@@ -13,6 +13,7 @@ service.getActivities().then((dados) => {
   getVehicle()
 });
 
+let arrVehicles = []
 const getVehicle = () => {
   service.getVehicle().then((dados) => {
     dados.forEach((element) => {
@@ -20,9 +21,10 @@ const getVehicle = () => {
         createNewLine(element)
       }
       if(element.label != null) {
-        console.log(element)
+        arrVehicles.push(element)
       }
     })
+    createOptions(arrVehicles)
   });
 }
 
@@ -39,4 +41,12 @@ const createNewLine = (object) => {
   `
   newLine.innerHTML = dadosHTML;
   return table.appendChild(newLine);
+}
+
+const createOptions = (arrVehicles) => {
+  const filterVehicles = []
+
+  arrVehicles.forEach((element) => {
+    idCheckin.includes(element.id) ? console.log("Já está estacionado") : console.log("Não está estacionado")
+  })
 }
