@@ -66,10 +66,26 @@ const getActivities = () => {
   })
 }
 
+const postCheckin = (label) => {
+  return fetch(url + "/activities/checkin", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({label})
+  }).then((response) => {
+    if(response.status != 200) {
+      alert(`Desculpe, houve o erro ${response.status}`);
+    } else {
+      return response.json()
+    }
+  })
+}
 export const service = {
   postVehicle,
   getVehicle,
   putVehicle,
   deleteVehicle,
   getActivities,
+  postCheckin,
 }

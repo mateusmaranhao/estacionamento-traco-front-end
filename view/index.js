@@ -122,7 +122,7 @@ const getCheckinHTML = () => {
         <a type="button" id="adicionar-novo">Adicionar Novo</a>
         <br>
         <div class="btn">
-          <button id="checkin" class="btn-link">Checkin</button>
+          <button id="checkin" class="btn-link">Check-in</button>
         </div>
       </div>
     </section>

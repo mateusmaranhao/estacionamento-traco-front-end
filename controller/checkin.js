@@ -57,3 +57,35 @@ const createOptions = (arrVehicles) => {
      select.add(option)
   })
 }
+
+const main = document.getElementById('root');
+main.addEventListener('click', (event) => {
+  const button = event.path[0].innerHTML
+  const id = event.path[0].id
+
+  if(button == "Check-out") {
+  }
+  if(button == "Check-in") {
+    const select = document.getElementById('select')
+    searchID(select.value)
+  }
+  if(button == "Adicionar Novo") {
+  }
+})
+
+const searchID = (id) => {
+  service.getVehicle().then((dados) => {
+    dados.forEach((element) => {
+      if(element.id == id) {
+        checkinAPI(element)
+      }
+    })
+  })
+}
+
+const checkinAPI = (object) => {
+  service.postCheckin(object.label).then((dados) => {
+    alert(dados.message)
+    window.location.reload()
+  })
+}
