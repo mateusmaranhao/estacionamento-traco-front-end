@@ -47,6 +47,13 @@ const createOptions = (arrVehicles) => {
   const filterVehicles = []
 
   arrVehicles.forEach((element) => {
-    idCheckin.includes(element.id) ? console.log("Já está estacionado") : console.log("Não está estacionado")
+    idCheckin.includes(element.id) ? 
+    console.log("Já está estacionado") : 
+    filterVehicles.push(element)
+  })
+  const select = document.getElementById('select')
+  filterVehicles.forEach((element) => {
+    const option = new Option(element.label, element.id);
+     select.add(option)
   })
 }
