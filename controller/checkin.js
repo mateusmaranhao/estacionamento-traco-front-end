@@ -1,12 +1,13 @@
 import { service } from "../service/index.js";
 import { view } from "../view/index.js"
+import { singupComponent } from "./cadastro.js";
 
 view.getCheckinHTML();
 
 let idCheckin = [];
 service.getActivities().then((dados) => {
   dados.forEach(element => {
-    if(element != null) {
+    if (element != null) {
       idCheckin.push(element.vehicles_id)
     }
   });
@@ -17,10 +18,10 @@ let arrVehicles = []
 const getVehicle = () => {
   service.getVehicle().then((dados) => {
     dados.forEach((element) => {
-      if(idCheckin.includes(element.id)) {
+      if (idCheckin.includes(element.id)) {
         createNewLine(element)
       }
-      if(element.label != null) {
+      if (element.label != null) {
         arrVehicles.push(element)
       }
     })
@@ -47,14 +48,14 @@ const createOptions = (arrVehicles) => {
   const filterVehicles = []
 
   arrVehicles.forEach((element) => {
-    idCheckin.includes(element.id) ? 
-    console.log("Já está estacionado") : 
-    filterVehicles.push(element)
+    idCheckin.includes(element.id) ?
+      console.log("Já está estacionado") :
+      filterVehicles.push(element)
   })
   const select = document.getElementById('select')
   filterVehicles.forEach((element) => {
     const option = new Option(element.label, element.id);
-     select.add(option)
+    select.add(option)
   })
 }
 
@@ -63,20 +64,21 @@ main.addEventListener('click', (event) => {
   const button = event.path[0].innerHTML
   const id = event.path[0].id
 
-  if(button == "Check-out") {
+  if (button == "Check-out") {
   }
-  if(button == "Check-in") {
+  if (button == "Check-in") {
     const select = document.getElementById('select')
     searchID(select.value)
   }
-  if(button == "Adicionar Novo") {
+  if (button == "Adicionar Novo") {
+    singupComponent()
   }
 })
 
 const searchID = (id) => {
   service.getVehicle().then((dados) => {
     dados.forEach((element) => {
-      if(element.id == id) {
+      if (element.id == id) {
         checkinAPI(element)
       }
     })
