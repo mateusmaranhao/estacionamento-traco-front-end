@@ -8,6 +8,7 @@ export const checkoutComponent = (idParam) => {
     dados.forEach(element => {
       if(element.id == idParam) {
         addParamsOnScreen(element)
+        searchRegister(idParam)
       }
     })
   })
@@ -21,4 +22,18 @@ const addParamsOnScreen = (object) => {
     <td>${object.label}</td>
   `
   newLine.innerHTML = dadosHTML;
+}
+
+const searchRegister = (id) => {
+  service.getActivities().then((dados) => {
+    dados.forEach((element) => {
+      if(element.vehicles_id == id) {
+        addParamsInput(element)
+      }
+    })
+  })
+}
+
+const addParamsInput = (element) => {
+  console.log(element)
 }
