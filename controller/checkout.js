@@ -35,5 +35,8 @@ const searchRegister = (id) => {
 }
 
 const addParamsInput = (element) => {
-  console.log(element)
+  const checkin = new Date(element.checkin_at);
+  const checkout = new Date();
+  const time = checkout - checkin;
+  console.log(new Date(time))
 }
