@@ -74,7 +74,7 @@ const addParamsInput = (element) => {
       label: vehicleLabel,
       price: Number(splitPrice[1])
     }
-    console.log(object)
+    checkoutAPI(object)
   })
 }
 
@@ -84,4 +84,10 @@ const calcHour = (timeMS) => {
     minutos: +((timeMS / 60000) % 60).toFixed(0)
   }
   return time;
+}
+
+const checkoutAPI = (object) => {
+  service.putCheckout(object).then(() => {
+    window.location.href = "../checkin.html";
+  })
 }

@@ -81,6 +81,23 @@ const postCheckin = (label) => {
     }
   })
 }
+
+const putCheckout = (object) => {
+  return fetch(url + "/activities/checkout", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(object)
+  }).then((response) => {
+    if(response.status != 200) {
+      alert(`Desculpe, houve o erro ${response.status}`);
+    } else {
+      return response.json()
+    }
+  })
+}
+
 export const service = {
   postVehicle,
   getVehicle,
@@ -88,4 +105,5 @@ export const service = {
   deleteVehicle,
   getActivities,
   postCheckin,
+  putCheckout,
 }
