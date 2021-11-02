@@ -180,4 +180,5 @@ export const view = {
   getClient,
   getUpdate,
   getCheckinHTML,
+  getCheckoutHTML,
 }
