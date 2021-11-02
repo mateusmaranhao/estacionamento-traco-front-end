@@ -7,8 +7,18 @@ export const checkoutComponent = (idParam) => {
   service.getVehicle().then((dados) => {
     dados.forEach(element => {
       if(element.id == idParam) {
-        console.log(element)
+        addParamsOnScreen(element)
       }
     })
   })
+}
+
+const addParamsOnScreen = (object) => {
+  const newLine = document.getElementById('tbody');
+  const dadosHTML = `
+    <td>${object.owner}</td>
+    <td>${object.model}</td>
+    <td>${object.label}</td>
+  `
+  newLine.innerHTML = dadosHTML;
 }
