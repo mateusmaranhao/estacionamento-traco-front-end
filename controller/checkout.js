@@ -34,12 +34,18 @@ const searchRegister = (id) => {
   })
 }
 
+const hourValue = 2;
+const minuteValue = hourValue / 60;
+
 const addParamsInput = (element) => {
   const checkin = new Date(element.checkin_at);
   const checkout = new Date();
   const time = checkout - checkin;
   const hour = calcHour(time);
-  console.log(hour)
+  const totalPrice = (hour.minutos + (hour.horas * 60)) * minuteValue;
+  console.log(totalPrice)
+  const hourInput = document.getElementById('totalHora')
+  const totalInput = document.getElementById('totalPagar')
 }
 
 const calcHour = (timeMS) => {
