@@ -45,22 +45,22 @@ const addParamsInput = (element) => {
   const totalPrice = (hour.minutos + (hour.horas * 60)) * minuteValue;
   console.log(totalPrice)
   let hourInput = document.getElementById('totalHora')
-  let totalInput = document.getElementById('totalPagar')
+  let totalInput = document.getElementById('valorPagar')
 
   // Mostrar hora
   if(hour.horas < 10 &&  hour.minutos < 10) {
-    hourInput.value = `Tempo 0${hour.horas}h0${hour.minutos}min`;
+    hourInput.value = `0${hour.horas}h0${hour.minutos}min`;
   } else if(hour.horas < 10 &&  hour.minutos > 10) {    
-    hourInput.value = `Tempo 0${hour.horas}h${hour.minutos}min`;
+    hourInput.value = `0${hour.horas}h${hour.minutos}min`;
   } else {    
-    hourInput.value = `Tempo ${hour.horas}h${hour.minutos}min`; 
+    hourInput.value = `${hour.horas}h${hour.minutos}min`; 
   }
 
   // Mostrar valor
   if(totalPrice < 10) {
-    totalInput = `R$ 0${totalPrice.toFixed(2)}`;
-  } else{
-    totalInput = `R$ ${totalPrice.toFixed(2)}`;
+    totalInput.value = `R$ 0${totalPrice.toFixed(2)}`;
+  } else {
+    totalInput.value = `R$ ${totalPrice.toFixed(2)}`;
   }
 }
 

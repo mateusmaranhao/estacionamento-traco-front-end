@@ -160,7 +160,7 @@ const getCheckoutHTML = () => {
         <label>Valor a pagar</label>
         <input
           id="valorPagar"
-          calss="input"
+          class="input"
           type="text"
           placeholder="Valor a pagar"
           disabled
