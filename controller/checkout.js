@@ -14,7 +14,10 @@ export const checkoutComponent = (idParam) => {
   })
 }
 
+let vehicleLabel = '';
+
 const addParamsOnScreen = (object) => {
+  vehicleLabel = object.label
   const newLine = document.getElementById('tbody');
   const dadosHTML = `
     <td>${object.owner}</td>
@@ -62,6 +65,17 @@ const addParamsInput = (element) => {
   } else {
     totalInput.value = `R$ ${totalPrice.toFixed(2)}`;
   }
+
+  const finalizar = document.getElementById('finalizar')
+  finalizar.addEventListener('click', () => {
+    const price = document.getElementById('valorPagar').value
+    const splitPrice = price.split(" ")
+    const object = {
+      label: vehicleLabel,
+      price: Number(splitPrice[1])
+    }
+    console.log(object)
+  })
 }
 
 const calcHour = (timeMS) => {
