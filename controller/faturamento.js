@@ -43,8 +43,10 @@ export const billingComponent = () => {
     createNewLine(countObject)
     createOptions(filterDates)
   }
+
+  const table = document.getElementById('tbody')
+
   const createNewLine = (countObject) => {
-    const table = document.getElementById('tbody')
     const newLine = document.createElement('tr');
 
     const dadosHTML = `
@@ -67,5 +69,32 @@ export const billingComponent = () => {
       select.add(option)
     })
   }
-}
 
+  table.addEventListener('click', (event) => {
+    if(event.path[0].id == 'dates') {
+      dateFilter(event)
+    }
+  })
+
+  const dateFilter = (event) => {
+    const day = event.path[0].value;
+    let countObject = {
+      i: 0,
+      total: 0,
+    }
+    
+
+    billingObject.forEach((element) => {
+      if(convertDate(element.checkout_at) == day) {
+        countObject.i++;
+        countObject.total += element.price;
+      }
+    })
+    updateHTML(countObject)
+    }
+  
+  const updateHTML = (countObject) => {
+    document.getElementById('qtd').innerText = countObject.i;
+    document.getElementById('total').innerText = `R$ ${countObject.total.toFixed(2)}`;
+  }
+}
