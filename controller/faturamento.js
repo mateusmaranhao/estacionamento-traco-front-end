@@ -40,7 +40,23 @@ export const billingComponent = () => {
         countObject.total += element.price;
       }
     })
-    console.log(countObject)
+    createNewLine(countObject)
+  }
+  const createNewLine = (countObject) => {
+    const table = document.getElementById('tbody')
+    const newLine = document.createElement('tr');
+
+    const dadosHTML = `
+      <td id="qtd">${countObject.i}</td>
+      <td id="total">${countObject.total.toFixed(2)}</td>
+      <td>
+        <select id="dates"></select>
+      </td>
+    `;
+
+    newLine.innerHTML = dadosHTML;
+
+    return table.appendChild(newLine);
   }
 }
 
