@@ -195,6 +195,7 @@ const getBillingHTML = () => {
     </div>
   </section>
   `
+  main.innerHTML = dadosHTML;
 }
 
 export const view = {
@@ -203,5 +204,5 @@ export const view = {
   getUpdate,
   getCheckinHTML,
   getCheckoutHTML,
-  getBillingHTML
+  getBillingHTML,
 }
