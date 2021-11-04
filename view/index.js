@@ -175,10 +175,33 @@ const getCheckoutHTML = () => {
   main.innerHTML = dadosHTML;
 }
 
+const getBillingHTML = () => {
+  const main = document.getElementById('root');
+  const dadosHTML = `
+  <section>
+    <h1>Lista de Faturamento</h1>
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th>Qtd. Veículos</th>
+          <th>Total</th>
+          <th>Dia</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div class="grafico">
+      <div id="piechart_3d"></div>
+    </div>
+  </section>
+  `
+}
+
 export const view = {
   getSignup,
   getClient,
   getUpdate,
   getCheckinHTML,
   getCheckoutHTML,
+  getBillingHTML
 }
