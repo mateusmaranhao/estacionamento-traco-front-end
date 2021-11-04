@@ -41,6 +41,7 @@ export const billingComponent = () => {
       }
     })
     createNewLine(countObject)
+    createOptions(filterDates)
   }
   const createNewLine = (countObject) => {
     const table = document.getElementById('tbody')
@@ -57,6 +58,14 @@ export const billingComponent = () => {
     newLine.innerHTML = dadosHTML;
 
     return table.appendChild(newLine);
+  }
+
+  const createOptions = (date) => {
+    const select = document.getElementById('dates')
+    date.forEach((element) => {
+      const option = new Option(element, element)
+      select.add(option)
+    })
   }
 }
 
