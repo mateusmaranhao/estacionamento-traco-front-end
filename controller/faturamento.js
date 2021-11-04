@@ -12,6 +12,7 @@ export const billingComponent = () => {
       }
     });
     createDateObject()
+    createBilling()
   })
 
   let filterDates = [];
@@ -21,12 +22,25 @@ export const billingComponent = () => {
       dates.push(convertDate(element.checkout_at))
     });
     filterDates = new Set(dates)
-    console.log(filterDates)
   }
 
   const convertDate = (time) => {
     const date = new Date(time).getDate()
     return date
+  }
+
+  const createBilling = () => {
+    let countObject = {
+      i: 0,
+      total: 0,
+    }
+    billingObject.forEach((element) => {
+      if(typeof element.price == "number") {
+        countObject.i++;
+        countObject.total += element.price;
+      }
+    })
+    console.log(countObject)
   }
 }
 
