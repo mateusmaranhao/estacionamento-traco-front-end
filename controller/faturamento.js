@@ -58,7 +58,7 @@ export const billingComponent = () => {
     `;
 
     newLine.innerHTML = dadosHTML;
-
+    chartRender()
     return table.appendChild(newLine);
   }
 
@@ -82,7 +82,6 @@ export const billingComponent = () => {
       i: 0,
       total: 0,
     }
-    
 
     billingObject.forEach((element) => {
       if(convertDate(element.checkout_at) == day) {
@@ -98,24 +97,38 @@ export const billingComponent = () => {
     document.getElementById('total').innerText = `R$ ${countObject.total.toFixed(2)}`;
   }
 
-  google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
+  let pieChartArr = [['Dia', 'Faturamento']]
+  const filterPieChartPerDate = (chartDates) => {
+    let countObject = {
+      i: 0,
+      total: 0,
+    }  
 
-        var options = {
-          title: 'My Daily Activities',
-          is3D: true,
-        };
+    chartDates.forEach((elementDates) => {
+      countObject.total = 0
+      billingObject.forEach((element) => {
+        if(convertDate(element.checkout_at) == elementDates) {
+          countObject.i++;
+          countObject.total += element.price;
+        }
+      })
+      pieChartArr.push([`${elementDates}`, +countObject.total.toFixed(2)])
+    })
+  }
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-        chart.draw(data, options);
-      }
+  function chartRender() {
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      filterPieChartPerDate(filterDates)
+      var data = google.visualization.arrayToDataTable(pieChartArr);
+
+      var options = {
+        is3D: true,
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+      chart.draw(data, options);
+    }
+  }
 }
