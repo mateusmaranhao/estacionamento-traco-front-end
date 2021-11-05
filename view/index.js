@@ -1,14 +1,15 @@
 const getSignup = () => {
     const main = document.getElementById('root');
   const dadosHTML = `
-  <h1>Novo Cliente</h1>
-      <form id="signup-form">
+      <form class="cadastro" id="signup-form">
+        <h1 class="cadastro__titulo">Novo Cliente</h1>
+
         <label for="type">Nome do cliente</label>
         <input type="text" id="name" placeholder="Digite aqui">
 
         <br><br>
 
-        <label for="type">Modelo do veículo</label>
+        <label>Modelo do veículo</label>
         <input type="text" id="model" placeholder="Digite aqui">
 
         <br><br>
@@ -30,9 +31,11 @@ const getSignup = () => {
         <textarea id="observation" cols="30" rows="10"></textarea>
 
         <br><br>
-
-        <button id="cancel" type="button">Cancelar</button>
-        <button id="save" type="submit">Salvar</button>
+        
+        <div class="cadastro__item">
+          <button id="cancel" type="button">Cancelar</button>
+          <button id="save" type="submit">Salvar</button>
+        </div>
       </form>
   `
 
@@ -42,11 +45,11 @@ const getSignup = () => {
 const getClient = () => {
   const main = document.getElementById('root');
   const dadosHTML = `
-    <section>
-      <h1>Lista de Clientes</h1>
-      <table id="tbody">
+    <section class="lista-cliente">
+      <h1 class="lista-cliente__title">Lista de Clientes</h1>
+      <table class="lista-cliente__table" id="tbody">
         <tr>
-          <th>Cliente</th>
+          <th class="none">Cliente</th>
           <th>Modelo</th>
           <th>Placa</th>
           <th>Tipo</th>
@@ -64,8 +67,9 @@ const getClient = () => {
 const getUpdate = () => {
   const main = document.getElementById('root');
 const dadosHTML = `
-<h1>Editar Cliente</h1>
-    <form id="signup-form">
+    <form class="cadastro" id="signup-form">
+      <h1 class="cadastro__titulo">Editar Cliente</h1>
+
       <label for="type">Nome do cliente</label>
       <input type="text" id="name" placeholder="Digite aqui">
 
@@ -93,9 +97,11 @@ const dadosHTML = `
       <textarea id="observation" cols="30" rows="10"></textarea>
 
       <br><br>
-
+      <div class="cadastro__item">
       <button id="cancel" type="button">Cancelar</button>
       <button id="save" type="submit">Atualizar</button>
+      </div>
+      
     </form>
 `
 
@@ -105,10 +111,10 @@ main.innerHTML = dadosHTML;
 const getCheckinHTML = () => {
   const main = document.getElementById('root');
   const dadosHTML = `
-    <section>
-      <h2>Lista de Clientes do Estacionamento</h2>
+    <section class="checkin">
+      <h2 class="checkin__title">Lista de Clientes do Estacionamento</h2>
       <br>
-      <table id="tbody" class="tabela">
+      <table id="tbody" class="checkin__table">
         <tr>
         <th>Modelo</th>
         <th>Placa</th>
@@ -116,12 +122,12 @@ const getCheckinHTML = () => {
         </tr>
       </table>
 
-      <div>
+      <div class="checkin__item">
         <label for="select">Placa</label>
-        <select id="select" class="input"></select>
-        <a type="button" id="adicionar-novo">Adicionar Novo</a>
+        <select class="checkin__input" id="select"></select>
+        <a type="button" id="adicionar-novo" class="checkin__item__link">Adicionar Novo</a>
         <br>
-        <div class="btn">
+        <div class="class="checkin__button"">
           <button id="checkin" class="btn-link">Check-in</button>
         </div>
       </div>
@@ -133,10 +139,10 @@ const getCheckinHTML = () => {
 const getCheckoutHTML = () => {
   const main = document.getElementById('root');
   const dadosHTML = `
-    <section class="container">
-      <h2>Dados do Cliente</h2>
+    <section class="checkout">
+      <h2 class="checkout__title">Dados do Cliente</h2>
       <br>
-      <table class="tabela">
+      <table class="checkout__table">
         <tr>
           <th>Cliente</th>
           <th>Modelo</th>
